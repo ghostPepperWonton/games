@@ -36,7 +36,7 @@ defmodule Games.Rank do
   @spec update(rank :: t(), attrs :: map()) :: {:ok, t()} | {:error, Ecto.Changeset.t()}
   def update(%Rank{} = rank, attrs) do
     rank
-    |> cast(attrs, @required_fields)
+    |> changeset(attrs)
     |> Repo.update()
   end
 
