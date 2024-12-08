@@ -8,6 +8,7 @@ defmodule Games.Rank do
   import Ecto.Changeset
 
   alias __MODULE__
+  alias Games.Game
   alias Games.Repo
 
   @type t :: %__MODULE__{
@@ -16,12 +17,14 @@ defmodule Games.Rank do
           description: String.t()
         }
 
-  @required_fields ~w(order letter description)a
+  @required_fields ~w(order letter description game_id)a
 
   schema "ranks" do
     field :order, :integer
     field :letter, :string
     field :description, :string
+
+    belongs_to :game, Game
 
     timestamps()
   end

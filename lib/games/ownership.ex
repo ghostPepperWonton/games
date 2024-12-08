@@ -8,6 +8,7 @@ defmodule Games.Ownership do
   import Ecto.Changeset
 
   alias __MODULE__
+  alias Games.Game
   alias Games.Repo
 
   @type t :: %__MODULE__{
@@ -17,8 +18,8 @@ defmodule Games.Ownership do
           library: atom()
         }
 
-  @required_fields ~w(type platform)a
-  @allowed_fields ~w(type platform format library)a
+  @required_fields ~w(type platform game_id)a
+  @allowed_fields ~w(format library)a
 
   schema "ownerships" do
     field :type, Ecto.Enum, values: ~w(have share want wishlist)a
@@ -28,6 +29,8 @@ defmodule Games.Ownership do
     |a
     field :format, Ecto.Enum, values: ~w(digital physical rom exe)a
     field :library, Ecto.Enum, values: ~w(steam epic ea itch gog)a
+
+    belongs_to :game, Game
 
     timestamps()
   end
