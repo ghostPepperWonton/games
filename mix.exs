@@ -12,7 +12,7 @@ defmodule Games.MixProject do
       aliases: aliases(),
       dialyzer: [
         ignore_warnings: ".dialyzer_ignore.exs",
-        plt_add_deps: :transitive,
+        plt_add_deps: :app_tree,
         plt_add_apps: [:ex_unit, :mix]
       ]
     ]
