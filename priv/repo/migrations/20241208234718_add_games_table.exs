@@ -15,6 +15,9 @@ defmodule Games.Repo.Migrations.AddGamesTable do
       add :is_next, :boolean
       add :play_status, :string
 
+      add :audiences, {:array, :string}
+      add :finishes, {:array, :date}
+
       timestamps()
     end
 
